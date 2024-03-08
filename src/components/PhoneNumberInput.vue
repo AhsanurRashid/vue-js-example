@@ -34,14 +34,15 @@ const handleSelectCoiuntry = (country) => {
 const searchText = ref(null)
 
 const getCountryBySearchByName = async(name) =>{
-    const res = await axios.get(`https://restcountries.com/v3.1/name/${name}`)
+    const res = await axios.get(`https://restcountries.com/v3.1/alpha/${name}`)
     countryData.value = res.data
 }
 
 watch(searchText, (newV, oldV) =>{
-    console.log('newV =>', newV)
     if(newV){
         getCountryBySearchByName(newV)
+    }else {
+        getAllcountryData()
     }
 })
 </script>
